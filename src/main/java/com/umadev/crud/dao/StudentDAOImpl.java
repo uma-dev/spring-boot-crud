@@ -40,7 +40,8 @@ public class StudentDAOImpl implements StudentDAO{
     @Override
     public List<Student> findAll() {
         // Create query USING JPA ENTITY CLASS NAME
-        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student", Student.class);
+        // In the order operation REFER to the FIELD OF JPA ENTITY (lastName)
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student order by lastName desc", Student.class);
 
         // Return query results
         return theQuery.getResultList();
