@@ -12,4 +12,7 @@ public interface StudentDAO {
 
     // Method for reading (searching)
     List<Student> findAll(); 
+
+    // Method for reading (searching)
+    List<Student> findByLastName(String theLastName); 
 }
