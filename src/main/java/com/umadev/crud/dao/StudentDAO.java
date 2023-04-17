@@ -15,4 +15,7 @@ public interface StudentDAO {
 
     // Method for reading (searching)
     List<Student> findByLastName(String theLastName); 
+
+    // Method for updating (read and write)
+    void update(Student theStudent); 
 }
