@@ -18,4 +18,10 @@ public interface StudentDAO {
 
     // Method for updating (read and write)
     void update(Student theStudent); 
+
+    // Method for delete by ID
+    void delete(Integer id); 
+
+    // Method for delete all students
+    int deleteAll(); 
 }

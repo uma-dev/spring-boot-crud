@@ -24,6 +24,7 @@ public class StudentDAOImpl implements StudentDAO{
     }
 
     // Implement save method
+    // Needs transactional since will modify the db
     @Override
     @Transactional
      public void save(Student theStudent) {
@@ -60,11 +61,29 @@ public class StudentDAOImpl implements StudentDAO{
         return theQuery.getResultList();
     }
 
-    // Needs transactional since will write
+    // Needs transactional since will modify database (write)
     @Override
     @Transactional
     public void update(Student theStudent) {
         entityManager.merge(theStudent);
     }
 
+    // Needs transactional since will modify database (delete)
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+        // Retrieve the Student
+        Student theStudent = entityManager.find(Student.class, id);
+
+        //Delete the student
+        entityManager.remove(theStudent);
+    }
+
+    // Needs transactional since will modify database (delete)
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return numRowsDeleted;
+    }
 }
